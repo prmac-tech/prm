@@ -7,7 +7,7 @@ variable "resource_group_name" {
 variable "location" {
   type        = string
   description = "Resources location in Microsoft Azure"
-  default = "azurerm_resource_group.rg.location"
+  default = "uksouth"
 }
 
 variable "cluster_name" {

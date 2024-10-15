@@ -19,3 +19,8 @@ jobs:
           azcliversion: latest
           inlineScript: |
             az account show
+      # Install the latest version of the Terraform CLI
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_wrapper: false      

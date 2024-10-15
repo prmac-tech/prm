@@ -28,9 +28,6 @@ jobs:
           terraform_wrapper: false      
       - name: Terraform init
         working-directory: ./.github
-        uses: Azure/login@v1
-        with:
-          creds: ${{secrets.AZURE_CREDENTIALS}}
         run: terraform init
       - name: Terraform Plan
         working-directory: ./.github

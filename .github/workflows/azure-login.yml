@@ -29,3 +29,6 @@ jobs:
       - name: Terraform init
         working-directory: ./.github
         run: terraform init
+      - name: Terraform Plan
+        working-directory: ./.github
+        run: terraform plan

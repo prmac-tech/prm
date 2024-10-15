@@ -9,6 +9,8 @@ jobs:
   azureLogin:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Azure Login
         uses: Azure/login@v1
         with:

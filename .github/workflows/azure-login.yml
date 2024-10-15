@@ -27,4 +27,5 @@ jobs:
         with:
           terraform_wrapper: false      
       - name: Terraform init
+        working-directory: ./.github
         run: terraform init

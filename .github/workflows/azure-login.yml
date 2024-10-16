@@ -36,4 +36,10 @@ jobs:
         run: terraform init
       - name: Terraform Plan
         working-directory: ./.github
-        run: terraform plan
+        run: terraform plan -out "tfplan"
+        env:
+          reviewers: 'pmcphee77'
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+#      - name: Terraform Apply
+#        working-directory: ./.github
+#        run: terraform apply "tfplan"

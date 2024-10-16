@@ -1,7 +1,7 @@
 variable "resource_group_name" {
   type        = string
   description = "Resource Group name in Microsoft Azure"
-  default = "aks_terraform_rg"
+  default = "prm"
 }
 
 variable "location" {

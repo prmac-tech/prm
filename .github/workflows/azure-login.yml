@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  azureLogin:
+  SetUpTerraform:
     env:
       ARM_CLIENT_ID: ${{secrets.ARM_CLIENT_ID}}
       ARM_CLIENT_SECRET: ${{secrets.ARM_CLIENT_SECRET}}
@@ -16,17 +16,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-#      - name: Azure Login
-#        uses: Azure/login@v1
-#        with:
-#          creds: ${{secrets.AZURE_CREDENTIALS}}
-#      - name: Azure CLI script
-#        uses: azure/cli@v2
-#        with:
-#          azcliversion: latest
-#          inlineScript: |
-#            az account show
-      # Install the latest version of the Terraform CLI
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
@@ -34,12 +23,16 @@ jobs:
       - name: Terraform init
         working-directory: ./.github
         run: terraform init
+  TerraformPlan:
+    env:
+      ARM_CLIENT_ID: ${{secrets.ARM_CLIENT_ID}}
+      ARM_CLIENT_SECRET: ${{secrets.ARM_CLIENT_SECRET}}
+      ARM_SUBSCRIPTION_ID: ${{secrets.ARM_SUBSCRIPTION_ID}}
+      ARM_TENANT_ID: ${{secrets.ARM_TENANT_ID}}
+      reviewers: 'pmcphee77'
+      GH_TOKEN: ${{ steps.app-token.outputs.token }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Terraform Plan
         working-directory: ./.github
         run: terraform plan -out "tfplan"
-        env:
-          reviewers: 'pmcphee77'
-          GH_TOKEN: ${{ steps.app-token.outputs.token }}
-#      - name: Terraform Apply
-#        working-directory: ./.github
-#        run: terraform apply "tfplan"

@@ -40,8 +40,8 @@ jobs:
         if: env.push == 'true'
         run: ./gradlew ${{ matrix.project }}:jib
         env:
-          GITHUB_USERNAME: ${{ github.actor }}
-          GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: pmcphee77
+          GITHUB_PASSWORD: ${{ secrets.GHCR_SECRET }}
 
       - name: Check changes
         id: check-changes

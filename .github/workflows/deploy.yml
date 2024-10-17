@@ -51,5 +51,5 @@ jobs:
           docker image tag "$image:${{ inputs.version }}" "$image:${{ inputs.environment }}"
           docker push --all-tags "$image"
         env:
-          image: ghcr.io/pmcphee77/prm/${{ matrix.project }}
+          image: ghcr.io/pmcphee77/${{ matrix.project }}
 

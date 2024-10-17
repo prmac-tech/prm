@@ -4,7 +4,7 @@ generic-service:
   nameOverride: rest-service
 
   image:
-    repository: ghcr.io/pmcphee77/prm/rest-service
+    repository: ghcr.io/pmcphee77/rest-service
 
   ingress:
     tlsSecretName: rest-service-cert

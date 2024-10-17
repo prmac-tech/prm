@@ -1,0 +1,27 @@
+name: Azure Auth
+description: Authenticate with Azure AKS
+
+runs:
+  using: composite
+  steps:
+    - name: Authenticate
+      uses: azure/login@v1
+      with:
+        client-id: ${{ secrets.CLIENT_ID }}
+        tenant-id: ${{ secrets.TENANT_ID }}
+        subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Setup kubectl
+      uses: azure/setup-kubectl@v3
+    - name: Setup kubelogin
+      uses: azure/use-kubelogin@v1
+      with:
+        kubelogin-version: 'v0.1.4'
+    - name: Set AKS context
+      id: set-context
+      uses: azure/aks-set-context@v3
+      with:
+        resource-group: 'prmk8s'
+        cluster-name: 'aks-terraform-cluster'
+        admin: 'false'
+        use-kubelogin: 'true'

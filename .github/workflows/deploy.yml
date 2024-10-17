@@ -1,0 +1,55 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      projects:
+        description: Project
+        type: choice
+        required: true
+        options:
+          - '["rest-service"]'
+      version:
+        description: Image version
+        type: string
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        project: ${{ fromJson(inputs.projects) }}
+    concurrency: deploy-${{ matrix.project }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Chart.yaml file exists
+        id: check_files
+        uses: andstor/file-existence-action@076e0072799f4942c8bc574a82233e1e4d13e9d6 # v2
+        with:
+          files: projects/${{ matrix.project }}/deploy/Chart.yaml
+      - name: Deploy to Azure K8s
+        if: ${{ steps.check_files.outputs.files_exists == 'true' }}
+        uses: ./.github/actions/azure-deploy
+        with:
+          project: ${{ matrix.project }}
+          environment: ${{ inputs.environment }}
+          version: ${{ inputs.version }}
+      - uses: docker/login-action@v3
+        if: ${{ steps.check_files.outputs.files_exists == 'true' && steps.enabled.outputs.enabled == 'true' }}
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+
+      - name: Tag image with environment
+        if: ${{ steps.check_files.outputs.files_exists == 'true' && steps.enabled.outputs.enabled == 'true' }}
+        run: |
+          docker pull "$image:${{ inputs.version }}"
+          docker pull "$image:${{ inputs.environment }}" && docker image tag "$image:${{ inputs.environment }}" "$image:${{ inputs.environment }}-prev"
+          docker image tag "$image:${{ inputs.version }}" "$image:${{ inputs.environment }}"
+          docker push --all-tags "$image"
+        env:
+          image: ghcr.io/pmcphee77/prm/${{ matrix.project }}
+

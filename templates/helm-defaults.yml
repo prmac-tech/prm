@@ -1,0 +1,29 @@
+---
+# Values here are the same across all projects and all environments
+generic-service:
+  replicaCount: 2
+  resources:
+    requests:
+      cpu: 128m
+      memory: 512Mi
+
+  startupProbe:
+    httpGet:
+      path: /health/liveness
+      port: http
+    periodSeconds: 10
+    timeoutSeconds: 10
+    failureThreshold: 30
+
+  image:
+    port: 8080
+
+  ingress:
+    enabled: true
+    v1_2_enabled: true
+    v0_47_enabled: false
+
+  env:
+    JDK_JAVA_OPTIONS: -javaagent:/agent/agent.jar -XX:MaxRAMPercentage=75.0
+
+

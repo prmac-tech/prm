@@ -1,0 +1,82 @@
+---
+
+replicaCount: 1
+
+image:
+  repository: example_repo/example_image
+  pullPolicy: IfNotPresent
+  port: 3000
+  tag: "example_app_version"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+containerArgs: []
+containerCommand: []
+serviceAccountName: ""
+podAnnotations: {}
+podSecurityContext: {}
+securityContext: &securityContext
+  capabilities:
+    drop:
+      - ALL
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
+  seccompProfile:
+    type: RuntimeDefault
+
+service:
+  enabled: true
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  annotations:
+    nginx.ingress.kubernetes.io/custom-http-errors: "418"
+  host: chart-example.local
+  hosts: []
+  path: /
+  healthPath: /health
+  tlsSecretName: chart-example-tls
+allowlist: {}
+allowlist_version: ""
+resources: {}
+envFrom: []
+volumes: []
+volumeMounts: []
+extraContainers: []
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+poddisruptionbudget:
+  enabled: true
+  minAvailable: 1
+nodeSelector: {}
+tolerations: []
+affinity: {}
+livenessProbe:
+  httpGet:
+    path: /health/liveness
+    port: http
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 10
+  failureThreshold: 10
+
+readinessProbe:
+  httpGet:
+    path: /health/readiness
+    port: http
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 10
+  failureThreshold: 10
+
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: 100%
+    maxUnavailable: 0

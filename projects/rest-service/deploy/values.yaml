@@ -1,0 +1,12 @@
+# Common values
+generic-service:
+  productId: HMPPS518
+  nameOverride: rest-service
+
+  image:
+    repository: ghcr.io/pmcphee77/prm/rest-service
+
+  ingress:
+    tlsSecretName: rest-service-cert
+
+

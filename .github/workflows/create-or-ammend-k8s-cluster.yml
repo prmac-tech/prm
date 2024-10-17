@@ -2,9 +2,9 @@ name: "Create/Amend K8s Cluster"
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
+#  push:
+#    branches: ['main']
+#    paths: ['infrastructure/**']
 
 jobs:
   TerraformApply:
@@ -13,7 +13,6 @@ jobs:
       ARM_CLIENT_SECRET: ${{secrets.ARM_CLIENT_SECRET}}
       ARM_SUBSCRIPTION_ID: ${{secrets.ARM_SUBSCRIPTION_ID}}
       ARM_TENANT_ID: ${{secrets.ARM_TENANT_ID}}
-      reviewers: 'pmcphee77'
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     runs-on: ubuntu-latest
     steps:
@@ -24,11 +23,11 @@ jobs:
         with:
           terraform_wrapper: false      
       - name: Terraform init
-        working-directory: ./.github
+        working-directory: ./infrastructure
         run: terraform init
       - name: Terraform Plan
-        working-directory: ./.github
+        working-directory: ./infrastructure
         run: terraform plan -out "tfplan"
       - name: Terraform Apply
-        working-directory: ./.github
+        working-directory: ./infrastructure
         run: terraform apply "tfplan"

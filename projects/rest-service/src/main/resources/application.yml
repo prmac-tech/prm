@@ -1,0 +1,22 @@
+# Default config
+server.shutdown: graceful
+spring:
+  jackson:
+    default-property-inclusion: non_null
+  threads.virtual.enabled: true
+
+management:
+  endpoints.web:
+    base-path: /
+    exposure.include: [ "health", "info" ]
+  endpoint.health.show-details: always
+
+---
+# dev/test config
+spring.config.activate.on-profile: [ "dev", "integration-test" ]
+server.shutdown: immediate
+
+logging.level:
+  uk.gov.justice.digital.hmpps: DEBUG
+  org.hibernate.tool.schema: ERROR
+  org.apache.activemq: WARN

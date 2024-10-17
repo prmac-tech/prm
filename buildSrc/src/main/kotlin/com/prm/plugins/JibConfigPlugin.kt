@@ -18,7 +18,7 @@ class JibConfigPlugin : Plugin<Project> {
             project.extensions.configure<JibExtension> {
                 container {
                     jvmFlags = mutableListOf("-Duser.timezone=Europe/London")
-                    mainClass = "uk.gov.justice.digital.hmpps.AppKt"
+                    mainClass = "com.prm.ApplicationKt"
                     user = "2000:2000"
                 }
                 from {
@@ -26,19 +26,6 @@ class JibConfigPlugin : Plugin<Project> {
                 }
                 to {
                     image = "ghcr.io/pmcphee77/prm-services/${project.name}"
-                }
-                extraDirectories {
-                    paths {
-                        path {
-                            setFrom("${project.rootProject.layout.buildDirectory.get().asFile}")
-                            includes.add("agent/agent.jar")
-                        }
-                        path {
-                            setFrom("${project.layout.buildDirectory.dir("agent").get().asFile}")
-                            includes.add("applicationinsights*.json")
-                            into = "/agent"
-                        }
-                    }
                 }
             }
 

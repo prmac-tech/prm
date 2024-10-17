@@ -17,6 +17,6 @@ spring.config.activate.on-profile: [ "dev", "integration-test" ]
 server.shutdown: immediate
 
 logging.level:
-  uk.gov.justice.digital.hmpps: DEBUG
+  com.prm: DEBUG
   org.hibernate.tool.schema: ERROR
   org.apache.activemq: WARN

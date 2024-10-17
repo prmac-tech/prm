@@ -41,7 +41,7 @@ jobs:
         run: ./gradlew ${{ matrix.project }}:jib
         env:
           GITHUB_USERNAME: ${{ github.actor }}
-          GITHUB_PASSWORD: ${{ github.token }}
+          GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check changes
         id: check-changes

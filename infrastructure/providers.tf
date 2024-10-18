@@ -1,8 +1,3 @@
-provider "azurerm" {
-  features {}
-  resource_provider_registrations = "none"
-}
-
 terraform {
   backend "azurerm" {
     use_oidc = true
@@ -16,5 +11,47 @@ terraform {
       source = "hashicorp/azurerm"
       version = "4.5.0"
     }
+    azuread = {
+      version = ">= 2.26.0" // https://github.com/terraform-providers/terraform-provider-azuread/releases
+    }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = ">= 2.0.3"
+    }
+    helm = {
+      source  = "hashicorp/helm"
+      version = ">= 2.1.0"
+    }
+    kubectl = {
+      source  = "gavinbunney/kubectl"
+      version = ">= 1.7.0"
+    }
   }
+}
+provider "random" {}
+provider "azurerm" {
+  features {}
+  resource_provider_registrations = "none"
+}
+provider "kubernetes" {
+  host                   = azurerm_kubernetes_cluster.aks.kube_admin_config.0.host
+  client_certificate     = base64decode(azurerm_kubernetes_cluster.aks.kube_admin_config.0.client_certificate)
+  client_key             = base64decode(azurerm_kubernetes_cluster.aks.kube_admin_config.0.client_key)
+  cluster_ca_certificate = base64decode(azurerm_kubernetes_cluster.aks.kube_admin_config.0.cluster_ca_certificate)
+}
+provider "helm" {
+  debug = true
+  kubernetes {
+    host                   = azurerm_kubernetes_cluster.aks.kube_admin_config.0.host
+    client_certificate     = base64decode(azurerm_kubernetes_cluster.aks.kube_admin_config.0.client_certificate)
+    client_key             = base64decode(azurerm_kubernetes_cluster.aks.kube_admin_config.0.client_key)
+    cluster_ca_certificate = base64decode(azurerm_kubernetes_cluster.aks.kube_admin_config.0.cluster_ca_certificate)
+  }
+}
+provider "kubectl" {
+  host                   = azurerm_kubernetes_cluster.aks.kube_admin_config.0.host
+  client_certificate     = base64decode(azurerm_kubernetes_cluster.aks.kube_admin_config.0.client_certificate)
+  client_key             = base64decode(azurerm_kubernetes_cluster.aks.kube_admin_config.0.client_key)
+  cluster_ca_certificate = base64decode(azurerm_kubernetes_cluster.aks.kube_admin_config.0.cluster_ca_certificate)
+  load_config_file       = false
 }

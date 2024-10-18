@@ -40,8 +40,8 @@ jobs:
         if: ${{ steps.check_files.outputs.files_exists == 'true' && steps.enabled.outputs.enabled == 'true' }}
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ github.token }}
+          username: pmcphee77
+          password: ${{ secrets.GHCR_SECRET }}
 
       - name: Tag image with environment
         if: ${{ steps.check_files.outputs.files_exists == 'true' && steps.enabled.outputs.enabled == 'true' }}

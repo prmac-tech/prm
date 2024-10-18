@@ -31,7 +31,7 @@ terraform {
 provider "random" {}
 provider "azurerm" {
   features {}
-  resource_provider_registrations = "none"
+  skip_provider_registration = true
 }
 provider "kubernetes" {
   host                   = azurerm_kubernetes_cluster.aks.kube_admin_config.0.host

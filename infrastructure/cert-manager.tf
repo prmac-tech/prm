@@ -25,7 +25,7 @@ resource "helm_release" "cert_manager" {
 }
 
 locals {
-  clusterissuer = "cert-manager/clusterissuer-nginx.yaml"
+  clusterissuer = "certificate-manager/clusterissuer-nginx.yaml"
 }
 
 # Create clusterissuer for nginx YAML file

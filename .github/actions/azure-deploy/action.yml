@@ -27,6 +27,11 @@ runs:
     - uses: actions/checkout@v4
     - name: Authenticate
       uses: ./.github/actions/azure-auth
+      with:
+        client_id: ${{inputs.client_id}}
+        tenant_id: ${{inputs.tenant_id}}
+        subscription_id: ${{inputs.subscription_id}}
+        azure_credentials: ${{inputs.azure_credentials}}
     - name: Deploy
       shell: bash
       run: |

@@ -15,9 +15,10 @@ runs:
     - uses: actions/checkout@v4
     - name: Authenticate
       uses: ./.github/actions/azure-auth
-
+      secrets: inherit
     - name: Deploy
       shell: bash
+      secrets: inherit
       run: |
         yq -i ".appVersion = \"${{ inputs.version }}\"" "projects/${{ inputs.project }}/deploy/Chart.yaml"
 

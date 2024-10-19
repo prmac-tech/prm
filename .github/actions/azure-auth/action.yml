@@ -24,9 +24,9 @@ runs:
     - name: Authenticate
       uses: azure/login@v1
       with:
-        client-id: ${{inputs.client_id}}
-        tenant-id: ${{inputs.tenant_id}}
-        subscription-id: ${{inputs.subscription_id}}
+#        client-id: ${{inputs.client_id}}
+#        tenant-id: ${{inputs.tenant_id}}
+#        subscription-id: ${{inputs.subscription_id}}
         creds: ${{inputs.azure_credentials}}
     - name: Setup kubectl
       uses: azure/setup-kubectl@v3

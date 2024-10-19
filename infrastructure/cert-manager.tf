@@ -26,6 +26,7 @@ resource "helm_release" "cert_manager" {
 
 locals {
   clusterissuer = "certificate-manager/clusterissuer-nginx.yaml"
+  certificates = "certificate-manager/certificates.yaml"
 }
 
 # Create clusterissuer for nginx YAML file
@@ -39,5 +40,17 @@ resource "kubectl_manifest" "clusterissuer" {
   yaml_body = each.value
   depends_on = [
     data.kubectl_file_documents.clusterissuer
+  ]
+}
+
+data "kubectl_file_documents" "certificates" {
+  content = file(local.certificates)
+}
+
+resource "kubectl_manifest" "certificates" {
+  for_each  = data.kubectl_file_documents.certificates.manifests
+  yaml_body = each.value
+  depends_on = [
+    data.kubectl_file_documents.certificates
   ]
 }

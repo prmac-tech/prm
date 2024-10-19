@@ -3,13 +3,12 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: $SERVICE_NAME-cert
+  name: rest-service-cert
   namespace: prm
 spec:
-  secretName: $SERVICE_NAME-cert
+  secretName: rest-service-cert
   issuerRef:
     name: letsencrypt
     kind: ClusterIssuer
   dnsNames:
-    - $SERVICE_SHORT_URL
-    - $SERVICE_URL
+    - rest-service.pr-mac.com

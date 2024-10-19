@@ -44,17 +44,10 @@ data "kubectl_file_documents" "clusterissuer" {
 resource "kubectl_manifest" "clusterissuer" {
   for_each  = data.kubectl_file_documents.clusterissuer.manifests
   yaml_body = each.value
-  depends_on = [
-    data.kubectl_file_documents.clusterissuer
-  ]
 }
 
 data "kubectl_file_documents" "certificates" {
   content = file(local.certificates)
-  depends_on = [
-    azurerm_kubernetes_cluster.aks,
-    kubernetes_namespace.cert_manager
-  ]
 }
 
 resource "kubectl_manifest" "certificates" {

@@ -6,6 +6,9 @@ resource "kubernetes_namespace" "cert_manager" {
     }
     name = "cert-manager"
   }
+  depends_on = [
+    azurerm_kubernetes_cluster.aks
+  ]
 }
 
 # Install cert-manager helm chart using terraform
@@ -32,6 +35,9 @@ locals {
 # Create clusterissuer for nginx YAML file
 data "kubectl_file_documents" "clusterissuer" {
   content = file(local.clusterissuer)
+  depends_on = [
+    azurerm_kubernetes_cluster.aks
+  ]
 }
 
 # Apply clusterissuer for nginx YAML file
@@ -45,12 +51,17 @@ resource "kubectl_manifest" "clusterissuer" {
 
 data "kubectl_file_documents" "certificates" {
   content = file(local.certificates)
+  depends_on = [
+    azurerm_kubernetes_cluster.aks,
+    kubernetes_namespace.cert_manager
+  ]
 }
 
 resource "kubectl_manifest" "certificates" {
   for_each  = data.kubectl_file_documents.certificates.manifests
   yaml_body = each.value
   depends_on = [
+    kubernetes_namespace.prm,
     data.kubectl_file_documents.certificates
   ]
 }

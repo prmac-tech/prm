@@ -15,9 +15,6 @@ on:
         required: true
 
 jobs:
-  auth:
-    uses: ./.github/actions/azure-deploy
-    secrets: inherit
   deploy:
     runs-on: ubuntu-latest
     strategy:
@@ -34,11 +31,17 @@ jobs:
           files: projects/${{ matrix.project }}/deploy/Chart.yaml
       - name: Deploy to Azure K8s
         if: ${{ steps.check_files.outputs.files_exists == 'true' }}
-        needs: auth
+        uses: ./.github/actions/azure-deploy
         with:
           project: ${{ matrix.project }}
           environment: ${{ inputs.environment }}
           version: ${{ inputs.version }}
+          client_id: ${{secrets.ARM_CLIENT_ID}}
+          client_secret: ${{secrets.ARM_CLIENT_SECRET}}
+          subscription_id: ${{secrets.ARM_SUBSCRIPTION_ID}}
+          tenant_id: ${{secrets.ARM_TENANT_ID}}
+          azure_credentials: ${{secrets.AZURE_CREDENTIALS}}
+
       - uses: docker/login-action@v3
         if: ${{ steps.check_files.outputs.files_exists == 'true' && steps.enabled.outputs.enabled == 'true' }}
         with:

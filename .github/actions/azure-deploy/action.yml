@@ -60,7 +60,6 @@ runs:
             --timeout 10m \
             --values templates/helm-defaults.yml \
             --values 'projects/${{ inputs.project }}/deploy/values.yaml' \
-            --values 'projects/${{ inputs.project }}/deploy/${{ steps.env.outputs.values-file }}' \
             --wait 2>&1 | tee "helm-$attempt.log"
           exit_code=${PIPESTATUS[0]}
           echo "Exit code: $exit_code" 

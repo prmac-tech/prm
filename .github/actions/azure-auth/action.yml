@@ -40,5 +40,5 @@ runs:
       with:
         resource-group: 'prmk8s'
         cluster-name: 'aks-terraform-cluster'
-        admin: 'false'
+        admin: 'true'
         use-kubelogin: 'true'

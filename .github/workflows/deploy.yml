@@ -28,6 +28,13 @@ jobs:
     concurrency: deploy-${{ matrix.project }}
     steps:
       - uses: actions/checkout@v4
+      - name: Get enabled flag from values file
+        id: enabled
+        shell: bash
+        run: echo "enabled=$(yq '.enabled' "$VALUES_FILE" | sed 's/^null$/true/')" | tee -a "$GITHUB_OUTPUT"
+        working-directory: projects/${{ matrix.project }}/deploy
+        env:
+          VALUES_FILE: ${{ steps.env.outputs.values-file }}
       - name: Check Chart.yaml file exists
         id: check_files
         uses: andstor/file-existence-action@076e0072799f4942c8bc574a82233e1e4d13e9d6 # v2

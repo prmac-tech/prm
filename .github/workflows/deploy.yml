@@ -32,6 +32,7 @@ jobs:
       - name: Deploy to Azure K8s
         if: ${{ steps.check_files.outputs.files_exists == 'true' }}
         uses: ./.github/actions/azure-deploy
+        secrets: inherit
         with:
           project: ${{ matrix.project }}
           environment: ${{ inputs.environment }}

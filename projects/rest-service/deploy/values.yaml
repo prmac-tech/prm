@@ -10,4 +10,6 @@ generic-service:
   ingress:
     tlsSecretName: rest-service-cert
 
+  imagePullSecrets:
+    - name: regcred
 

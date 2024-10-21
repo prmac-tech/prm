@@ -19,20 +19,20 @@ variable "docker_password" {
 variable "docker_username" {
   description = "Docker username"
   type        = string
-  value = "pmcphee77"
+  default = "pmcphee77"
   sensitive   = true
 }
 
 variable "docker_server" {
   description = "Docker server"
   type        = string
-  value = "ghcr.io"
+  default = "ghcr.io"
 }
 
 variable "docker_email" {
   description = "Docker email"
   type        = string
-  value = "paul.mcphee@gmail.com"
+  default = "paul.mcphee@gmail.com"
 }
 
 

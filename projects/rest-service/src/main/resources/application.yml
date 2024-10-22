@@ -4,6 +4,9 @@ spring:
   jackson:
     default-property-inclusion: non_null
   threads.virtual.enabled: true
+  datasource.url: jdbc:h2:file:./db;MODE=PostgreSQL;DEFAULT_NULL_ORDERING=HIGH;AUTO_SERVER=true;AUTO_SERVER_PORT=9092
+  jpa:
+    hibernate.ddl-auto: create-drop
 
 management:
   endpoints.web:

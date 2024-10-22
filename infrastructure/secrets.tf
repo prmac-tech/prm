@@ -1,6 +1,8 @@
 resource "kubernetes_secret" "docker-registry" {
   metadata {
     name = "regcred"
+    namespace = "prm"
+    }
   }
 
   data = {
@@ -10,7 +12,8 @@ resource "kubernetes_secret" "docker-registry" {
   type = "kubernetes.io/dockerconfigjson"
 
   depends_on = [
-    azurerm_kubernetes_cluster.aks
+    azurerm_kubernetes_cluster.aks,
+    kubernetes_namespace.prm
   ]
 }
 

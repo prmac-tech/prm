@@ -26,4 +26,9 @@ data "template_file" "docker_config_script" {
     docker-email              = "${var.docker_email}"
     auth                      = base64encode("${var.docker_username}:${var.docker_password}")
   }
+
+  depends_on = [
+    azurerm_kubernetes_cluster.aks,
+    kubernetes_namespace.prm
+  ]
 }

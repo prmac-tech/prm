@@ -15,7 +15,7 @@ generic-service:
     v1_2_enabled: true
     v0_47_enabled: false
 
-  env:
-    JDK_JAVA_OPTIONS: -javaagent:/agent/agent.jar -XX:MaxRAMPercentage=75.0
+#  env:
+#    JDK_JAVA_OPTIONS: -javaagent:/agent/agent.jar -XX:MaxRAMPercentage=75.0
 
 

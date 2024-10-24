@@ -22,7 +22,7 @@ jobs:
           terraform_wrapper: false      
       - name: Terraform init
         working-directory: ./infrastructure
-        run: terraform init -lock=false
+        run: terraform init
       - name: Terraform Destroy
         working-directory: ./infrastructure
-        run: terraform destroy --force -auto-approve -lock=false
+        run: terraform destroy -auto-approve

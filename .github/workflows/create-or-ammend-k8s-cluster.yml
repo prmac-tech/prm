@@ -25,10 +25,10 @@ jobs:
           terraform_wrapper: false      
       - name: Terraform init
         working-directory: ./infrastructure
-        run: terraform init
+        run: terraform init -lock=false
       - name: Terraform Plan
         working-directory: ./infrastructure
-        run: terraform plan -out "tfplan"
+        run: terraform plan -out "tfplan" -lock=false
       - name: Terraform Apply
         working-directory: ./infrastructure
-        run: terraform apply "tfplan"
+        run: terraform apply "tfplan" -lock=false

@@ -1,6 +1,8 @@
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = var.location
+  oidc_issuer_enabled =  true
+  workload_identity_enabled = true
 }
 
 resource "azurerm_kubernetes_cluster" "aks" {

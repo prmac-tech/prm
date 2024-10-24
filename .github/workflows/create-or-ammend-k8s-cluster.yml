@@ -26,9 +26,9 @@ jobs:
       - name: Terraform init
         working-directory: ./infrastructure
         run: terraform init -lock=false
-      - name: Terraform Plan
-        working-directory: ./infrastructure
-        run: terraform plan -lock=false
+#      - name: Terraform Plan
+#        working-directory: ./infrastructure
+#        run: terraform plan -lock=false
       - name: Terraform Apply
         working-directory: ./infrastructure
         run: terraform apply -lock=false

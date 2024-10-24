@@ -23,6 +23,9 @@ jobs:
       - name: Terraform init
         working-directory: ./infrastructure
         run: terraform init
+      - name: Terraform Refresh
+        working-directory: ./infrastructure
+        run: terraform refresh
       - name: Terraform Plan
         working-directory: ./infrastructure
         run: terraform plan -out "tfplan"

@@ -1,8 +1,6 @@
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = var.location
-  oidc_issuer_enabled =  true
-  workload_identity_enabled = true
 }
 
 resource "azurerm_kubernetes_cluster" "aks" {
@@ -13,6 +11,8 @@ resource "azurerm_kubernetes_cluster" "aks" {
   dns_prefix          = var.cluster_name
   node_resource_group = var.node_resource_group
   local_account_disabled = false
+  oidc_issuer_enabled =  true
+  workload_identity_enabled = true
 
   default_node_pool {
     name                = "system"

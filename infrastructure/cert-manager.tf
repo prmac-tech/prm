@@ -42,7 +42,7 @@ resource "kubectl_manifest" "clusterissuer" {
   for_each  = data.kubectl_file_documents.clusterissuer.manifests
   yaml_body = each.value
   depends_on = [
-    azurerm_kubernetes_cluster.aks
+    data.kubectl_file_documents.clusterissuer
   ]
 }
 

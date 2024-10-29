@@ -12,6 +12,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("com.h2database:h2")
+    implementation(libs.springdoc)
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

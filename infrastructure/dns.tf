@@ -11,7 +11,7 @@ data "azurerm_dns_zone" "aks_dns_zone" {
 
 resource "azurerm_user_assigned_identity" "aks_dns_identity" {
   name                = "aks-dns-identity"
-  resource_group_name = var.resource_group_name
+  resource_group_name = "prm"
   location            = azurerm_resource_group.rg.location
 
   depends_on = [
@@ -21,7 +21,7 @@ resource "azurerm_user_assigned_identity" "aks_dns_identity" {
 
 resource "azurerm_federated_identity_credential" "default" {
   name                = "prm"
-  resource_group_name = var.resource_group_name
+  resource_group_name = "prm"
   audience            = ["api://AzureADTokenExchange"]
   issuer              = azurerm_kubernetes_cluster.aks.oidc_issuer_url
   parent_id           = azurerm_user_assigned_identity.aks_dns_identity.id
@@ -78,7 +78,7 @@ resource helm_release external_dns {
       azure_subscription_id  = data.azurerm_subscription.current.subscription_id
       azure_tenant_id        = data.azurerm_subscription.current.tenant_id
       external_dns_client_id = azurerm_user_assigned_identity.aks_dns_identity.client_id
-      azure_resource_group   = var.resource_group_name
+      azure_resource_group   = "prm"
     })
   ]
 

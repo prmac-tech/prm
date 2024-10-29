@@ -1,9 +1,13 @@
 data "azurerm_subscription" "current" {}
 
-resource "azurerm_dns_zone" "aks_dns_zone" {
+data "azurerm_dns_zone" "aks_dns_zone" {
   name                = "pr-mac.com"
-  resource_group_name = var.resource_group_name
 }
+
+#resource "azurerm_dns_zone" "aks_dns_zone" {
+#  name                = "pr-mac.com"
+#  resource_group_name = var.resource_group_name
+#}
 
 resource "azurerm_user_assigned_identity" "aks_dns_identity" {
   name                = "aks-dns-identity"
@@ -29,12 +33,9 @@ resource "azurerm_federated_identity_credential" "default" {
 }
 
 resource "azurerm_role_assignment" "aks_dns_role_assignment" {
-  scope                = azurerm_dns_zone.aks_dns_zone.id
+  scope                = data.azurerm_dns_zone.aks_dns_zone.id
   role_definition_name = "Contributor"
   principal_id         = azurerm_user_assigned_identity.aks_dns_identity.principal_id
-  depends_on = [
-    azurerm_dns_zone.aks_dns_zone
-  ]
 }
 
 resource "azurerm_role_assignment" "aks_rg_reader_role_assignment" {

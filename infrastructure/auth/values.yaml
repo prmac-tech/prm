@@ -1,5 +1,6 @@
-adminIngress:
+ingress:
   enabled: true
+  certManager: true
   hostname: auth.pr-mac.com
 postgresql:
   enabled: false
@@ -8,6 +9,3 @@ externalDatabase:
 extraEnvVars:
   - name: KEYCLOAK_DATABASE_VENDOR
     value: "dev-db-file"
-tls:
-  enabled: true
-  existingSecret: auth-cert

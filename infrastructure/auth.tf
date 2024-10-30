@@ -1,6 +1,6 @@
 
 resource "helm_release" "keycloak" {
-  name       = "cert-manager"
+  name       = "auth"
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "keycloak"
   namespace  = "prm"
@@ -12,6 +12,7 @@ resource "helm_release" "keycloak" {
     })
   ]
   depends_on = [
+    kubectl_manifest.certificates,
     azurerm_kubernetes_cluster.aks
   ]
 }

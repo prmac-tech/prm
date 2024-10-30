@@ -8,4 +8,4 @@ externalDatabase:
   host: "none"
 extraEnvVars:
   - name: KEYCLOAK_DATABASE_VENDOR
-    value: "dev-db-file"
+    value: "dev-file"

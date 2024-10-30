@@ -1,0 +1,8 @@
+keycloak:
+  postgresql:
+    enabled: false
+  externalDatabase:
+    host: "none"
+  extraEnvVars:
+    - name: KEYCLOAK_DATABASE_VENDOR
+      value: "dev-db-file"

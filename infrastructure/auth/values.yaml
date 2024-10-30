@@ -1,8 +1,13 @@
-keycloak:
-  postgresql:
-    enabled: false
-  externalDatabase:
-    host: "none"
-  extraEnvVars:
-    - name: KEYCLOAK_DATABASE_VENDOR
-      value: "dev-db-file"
+adminIngress:
+  enabled: true
+  hostname: auth.pr-mac.com
+postgresql:
+  enabled: false
+externalDatabase:
+  host: "none"
+extraEnvVars:
+  - name: KEYCLOAK_DATABASE_VENDOR
+    value: "dev-db-file"
+tls:
+  enabled: true
+  existingSecret: auth-cert

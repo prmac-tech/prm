@@ -10,3 +10,16 @@ spec:
     kind: ClusterIssuer
   dnsNames:
     - rest-service.pr-mac.com
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: auth-cert
+  namespace: prm
+spec:
+  secretName: auth-cert
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  dnsNames:
+    - auth.pr-mac.com

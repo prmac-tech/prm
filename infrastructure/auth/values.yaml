@@ -3,9 +3,7 @@ ingress:
   certManager: true
   hostname: auth.pr-mac.com
   ingressClassName: nginx
-  tls:
-    enabled: true
-    secretName: auth-cert
+  tls: true
 postgresql:
   enabled: false
 externalDatabase:

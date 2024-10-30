@@ -5,7 +5,7 @@ ingress:
   ingressClassName: nginx
   tls:
    - hosts:
-       - keycloak.example.com
+       - auth.pr-mac.com
      secretName: auth-cert
 postgresql:
   enabled: false

@@ -26,6 +26,7 @@ resource "kubernetes_persistent_volume" "k8s-pv" {
 resource "kubernetes_persistent_volume_claim" "k8s-pvc" {
   metadata {
     name = "k8s-pvc"
+    namespace  = "prm"
   }
   spec {
     access_modes = ["ReadWriteOnce"]

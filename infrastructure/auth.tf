@@ -12,6 +12,7 @@ resource "helm_release" "keycloak" {
     })
   ]
   depends_on = [
+    kubernetes_persistent_volume_claim.k8s-pvc,
     kubectl_manifest.certificates,
     azurerm_kubernetes_cluster.aks
   ]

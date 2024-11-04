@@ -33,7 +33,6 @@ resource "kubernetes_persistent_volume_claim" "k8s-pvc" {
         storage = "1Gi"
       }
     }
-    storage_class_name = "standard"
   }
   depends_on = [
     azurerm_kubernetes_cluster.aks

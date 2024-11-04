@@ -15,9 +15,6 @@ resource "kubernetes_persistent_volume" "k8s-pv" {
         disk_name     = "k8s"
         kind          = "Managed"
       }
-      host_path {
-        path = "/mnt/data"
-      }
     }
   }
   depends_on = [

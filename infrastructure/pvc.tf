@@ -7,15 +7,16 @@ resource "kubernetes_persistent_volume" "k8s-pv" {
       storage = "1Gi"
     }
     access_modes = ["ReadWriteOnce"]
-    host_path {
-      path = "/mnt/data"
-    }
+
     persistent_volume_source {
       azure_disk {
         caching_mode  = "None"
         data_disk_uri = azurerm_managed_disk.k8s-disk.id
         disk_name     = "k8s"
         kind          = "Managed"
+      }
+      host_path {
+        path = "/mnt/data"
       }
     }
   }
@@ -31,7 +32,7 @@ resource "kubernetes_persistent_volume_claim" "k8s-pvc" {
   spec {
     access_modes = ["ReadWriteOnce"]
     resources {
-      requests {
+      requests = {
         storage = "1Gi"
       }
     }

@@ -7,6 +7,7 @@ resource "kubernetes_persistent_volume" "k8s-pv" {
       storage = "1Gi"
     }
     access_modes = ["ReadWriteOnce"]
+    storage_class_name = "standard"
 
     persistent_volume_source {
       azure_disk {
@@ -33,6 +34,7 @@ resource "kubernetes_persistent_volume_claim" "k8s-pvc" {
         storage = "1Gi"
       }
     }
+    storage_class_name = "standard"
   }
   depends_on = [
     azurerm_kubernetes_cluster.aks

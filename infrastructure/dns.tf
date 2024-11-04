@@ -61,6 +61,7 @@ resource helm_release ingress {
   }
 
   depends_on = [
+    helm_release.cert_manager,
     azurerm_kubernetes_cluster.aks
   ]
 }

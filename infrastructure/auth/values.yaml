@@ -12,6 +12,14 @@ externalDatabase:
 extraEnvVars:
   - name: KEYCLOAK_DATABASE_VENDOR
     value: "dev-file"
+extraVolumes:
+  - name: kc-ps
+    persistentVolumeClaim:
+      claimName: k8s-pvc
+extraVolumeMounts:
+  - name: kc-ps
+    mountPath: /opt/jboss/keycloak/data
+
 auth:
   adminUser: admin
   adminPassword: admin

@@ -23,7 +23,8 @@ resource "helm_release" "cert_manager" {
     value = "true"
   }
   depends_on = [
-    kubernetes_namespace.cert_manager
+    kubernetes_namespace.cert_manager,
+    azurerm_kubernetes_cluster.aks
   ]
 }
 
@@ -42,7 +43,8 @@ resource "kubectl_manifest" "clusterissuer" {
   for_each  = data.kubectl_file_documents.clusterissuer.manifests
   yaml_body = each.value
   depends_on = [
-    data.kubectl_file_documents.clusterissuer
+    data.kubectl_file_documents.clusterissuer,
+    azurerm_kubernetes_cluster.aks
   ]
 }
 
@@ -55,6 +57,7 @@ resource "kubectl_manifest" "certificates" {
   yaml_body = each.value
   depends_on = [
     kubernetes_namespace.prm,
-    data.kubectl_file_documents.certificates
+    data.kubectl_file_documents.certificates,
+    azurerm_kubernetes_cluster.aks
   ]
 }

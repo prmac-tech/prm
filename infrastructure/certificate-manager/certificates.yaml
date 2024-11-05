@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: rest-service-cert
   issuerRef:
-    name: letsencrypt
+    name: letsencrypt-staging
     kind: ClusterIssuer
   dnsNames:
     - rest-service.pr-mac.com
@@ -19,7 +19,7 @@ metadata:
 spec:
   secretName: auth-cert
   issuerRef:
-    name: letsencrypt
+    name: letsencrypt-staging
     kind: ClusterIssuer
   dnsNames:
     - auth.pr-mac.com

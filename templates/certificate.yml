@@ -8,7 +8,7 @@ metadata:
 spec:
   secretName: $SERVICE_NAME-cert
   issuerRef:
-    name: letsencrypt
+    name: letsencrypt-staging
     kind: ClusterIssuer
   dnsNames:
     - $SERVICE_SHORT_URL

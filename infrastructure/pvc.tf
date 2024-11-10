@@ -1,6 +1,6 @@
 data azurerm_managed_disk azure_disk_prm {
   name = "prm"
-  resource_group_name = "prm"
+  resource_group_name = "prmK8s"
 }
 
 resource "kubernetes_persistent_volume" "pv-azuredisk" {

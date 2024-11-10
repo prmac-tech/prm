@@ -5,7 +5,7 @@ data azurerm_managed_disk azure_disk_prm {
 
 resource "kubernetes_persistent_volume" "pv-azuredisk" {
   metadata {
-    annotations = "pv.kubernetes.io/provisioned-by: disk.csi.azure.com"
+    annotations = { "pv.kubernetes.io/provisioned-by" = "disk.csi.azure.com"}
     name = "pv-azuredisk"
   }
   spec {

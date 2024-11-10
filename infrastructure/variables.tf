@@ -66,7 +66,7 @@ variable "kubernetes_storage_pvc" {
   sensitive   = false
   type        = string
   description = "Kubernetes Storage Class"
-  default     = "prm-pvc"
+  default     = "prm"
 }
 
 variable "kubernetes_storage_allocation_size" {

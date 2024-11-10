@@ -4,7 +4,7 @@ resource "helm_release" "postgresql" {
   repository       = "https://charts.bitnami.com/bitnami"
   chart            = "postgresql-ha"
   version          = "14.3.7"
-  namespace        = azurerm_resource_group.rg.name
+  namespace        = "prm"
   create_namespace = true
 
   set {

@@ -9,7 +9,7 @@ resource "kubernetes_persistent_volume" "pv-azuredisk" {
     name = "pv-azuredisk"
   }
   spec {
-    capacity {
+    capacity = {
       storage = "2Gi"
     }
     access_modes = ["ReadWriteOnce"]

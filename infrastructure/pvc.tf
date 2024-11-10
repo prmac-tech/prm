@@ -14,7 +14,7 @@ resource "kubernetes_persistent_volume" "pv-azuredisk" {
     }
     access_modes = ["ReadWriteOnce"]
     persistent_volume_reclaim_policy = "Retain"
-    storage_class_name: "managed-csi"
+    storage_class_name = "managed-csi"
     persistent_volume_source {
       azure_disk {
         caching_mode  = "None"

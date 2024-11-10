@@ -13,6 +13,8 @@ resource "azurerm_kubernetes_cluster" "aks" {
   local_account_disabled = false
   oidc_issuer_enabled =  true
   workload_identity_enabled = true
+  zones  = ["1", "2"]
+  temporary_name_for_rotation = "tmpaks"
 
   default_node_pool {
     name                = "system"

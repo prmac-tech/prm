@@ -31,6 +31,7 @@ resource "kubernetes_persistent_volume_claim" "prm-pvc" {
     name = "prm"
     namespace  = "prm"
   }
+  wait_until_bound = false
   spec {
     access_modes = ["ReadWriteOnce"]
     resources {
@@ -44,14 +45,3 @@ resource "kubernetes_persistent_volume_claim" "prm-pvc" {
     azurerm_kubernetes_cluster.aks
   ]
 }
-#apiVersion: v1
-#kind: PersistentVolumeClaim
-#metadata:
-#name: azure-managed-disk
-#spec:
-#accessModes:
-#- ReadWriteOnce
-#storageClassName: managed-csi
-#resources:
-#requests:
-#storage: 5Gi

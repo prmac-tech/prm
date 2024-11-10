@@ -3,6 +3,12 @@ data azurerm_managed_disk azure_disk_prm {
   resource_group_name = "prmK8s"
 }
 
+resource "azurerm_role_assignment" "role-assignment" {
+  role_definition_name = "Contributor"
+  scope              = data.azurerm_managed_disk.azure_disk_prm
+  principal_id       = azurerm_kubernetes_cluster.aks.identity.principal_id
+}
+
 resource "kubernetes_persistent_volume" "pv-azuredisk" {
   metadata {
     annotations = { "pv.kubernetes.io/provisioned-by" = "disk.csi.azure.com"}

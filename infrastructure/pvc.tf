@@ -24,6 +24,10 @@ resource "kubernetes_persistent_volume" "pv-azuredisk" {
       }
     }
   }
+
+  depends_on = [
+    azurerm_kubernetes_cluster.aks
+  ]
 }
 
 resource "kubernetes_persistent_volume_claim" "prm-pvc" {
@@ -42,6 +46,6 @@ resource "kubernetes_persistent_volume_claim" "prm-pvc" {
     storage_class_name = "managed-csi"
   }
   depends_on = [
-    azurerm_kubernetes_cluster.aks
+    kubernetes_persistent_volume.pv-azuredisk
   ]
 }

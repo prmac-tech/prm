@@ -62,11 +62,11 @@ variable "node_resource_group" {
 #---------------------------------------------------------------------------------------------------
 # Storage
 #---------------------------------------------------------------------------------------------------
-variable "kubernetes_storage_class" {
+variable "kubernetes_storage_pvc" {
   sensitive   = false
   type        = string
   description = "Kubernetes Storage Class"
-  default     = ""
+  default     = "prm-pvc"
 }
 
 variable "kubernetes_storage_allocation_size" {

@@ -12,11 +12,8 @@ data "azurerm_dns_zone" "aks_dns_zone" {
 resource "azurerm_user_assigned_identity" "aks_dns_identity" {
   name                = "aks-dns-identity"
   resource_group_name = "prm"
-  location            = azurerm_resource_group.rg.location
+  location            = data.azurerm_resource_group.rg.location
 
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
 }
 
 resource "azurerm_federated_identity_credential" "default" {
@@ -39,13 +36,9 @@ resource "azurerm_role_assignment" "aks_dns_role_assignment" {
 }
 
 resource "azurerm_role_assignment" "aks_rg_reader_role_assignment" {
-  scope                = azurerm_resource_group.rg.id
+  scope                = data.azurerm_resource_group.rg.id
   role_definition_name = "Reader"
   principal_id         = azurerm_user_assigned_identity.aks_dns_identity.principal_id
-
-  depends_on = [
-    azurerm_resource_group.rg
-  ]
 }
 
 resource helm_release ingress {

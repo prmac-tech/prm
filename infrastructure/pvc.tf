@@ -6,7 +6,7 @@ data azurerm_managed_disk azure_disk_prm {
 resource "azurerm_role_assignment" "role-assignment" {
   role_definition_name = "Contributor"
   scope              = data.azurerm_managed_disk.azure_disk_prm
-  principal_id       = azurerm_kubernetes_cluster.aks.identity.principal_id
+  principal_id       = azurerm_kubernetes_cluster.aks.identity[0].principal_id
 }
 
 resource "kubernetes_persistent_volume" "pv-azuredisk" {

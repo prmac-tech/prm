@@ -1,21 +1,21 @@
-#resource "kubernetes_persistent_volume_claim" "k8s-pvc" {
-#  metadata {
-#    name = "k8s-pvc"
-#    namespace  = "prm"
-#  }
-#  spec {
-#    access_modes = ["ReadWriteOnce"]
-#    resources {
-#      requests = {
-#        storage = "1Gi"
-#      }
-#    }
-#    storage_class_name = "default"
-#  }
-#  depends_on = [
-#    azurerm_kubernetes_cluster.aks
-#  ]
-#}
+resource "kubernetes_persistent_volume_claim" "prm-pvc" {
+  metadata {
+    name = "prm"
+    namespace  = "prm"
+  }
+  spec {
+    access_modes = ["ReadWriteOnce"]
+    resources {
+      requests = {
+        storage = "2Gi"
+      }
+    }
+    storage_class_name = "managed-csi"
+  }
+  depends_on = [
+    azurerm_kubernetes_cluster.aks
+  ]
+}
 #apiVersion: v1
 #kind: PersistentVolumeClaim
 #metadata:

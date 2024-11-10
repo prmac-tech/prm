@@ -15,6 +15,7 @@ jobs:
       ARM_TENANT_ID: ${{secrets.ARM_TENANT_ID}}
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       TF_VAR_docker_password: ${{ secrets.GHCR_SECRET }}
+      TF_VAR_postgresql_password: ${{ secrets.POSTGRES_PASSWORD }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

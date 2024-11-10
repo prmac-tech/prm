@@ -35,9 +35,6 @@ variable "docker_email" {
   default = "paul.mcphee@gmail.com"
 }
 
-
-
-
 variable "cluster_name" {
   type        = string
   description = "AKS name in Microsoft Azure"
@@ -60,4 +57,59 @@ variable "node_resource_group" {
   type        = string
   description = "Resource Group name for cluster resources in Microsoft Azure"
   default = "aks_terraform_node_resources_rg"
+}
+
+#---------------------------------------------------------------------------------------------------
+# Storage
+#---------------------------------------------------------------------------------------------------
+variable "kubernetes_storage_class" {
+  sensitive   = false
+  type        = string
+  description = "Kubernetes Storage Class"
+  default     = ""
+}
+
+variable "kubernetes_storage_allocation_size" {
+  sensitive   = false
+  type        = string
+  description = "PostgreSQL Storage Allocation Size"
+  default     = "8Gi"
+}
+
+#---------------------------------------------------------------------------------------------------
+# PostgreSQL
+#---------------------------------------------------------------------------------------------------
+variable "postgresql_version" {
+  sensitive   = false
+  type        = string
+  description = "PostgreSQL version"
+  default     = "14.0.0"
+}
+
+variable "postgresql_router_count" {
+  sensitive   = false
+  type        = number
+  description = "Total PostgreSQL Pool"
+  default     = 1
+}
+
+variable "postgresql_server_count" {
+  sensitive   = false
+  type        = number
+  description = "Total PostgreSQL Server"
+  default     = 1
+}
+
+#---------------------------------------------------------------------------------------------------
+# Authentication
+#---------------------------------------------------------------------------------------------------
+variable "postgresql_username" {
+  sensitive   = false
+  description = "Username"
+  default     = "postgres"
+}
+
+variable "postgresql_password" {
+  sensitive   = true
+  description = "PostgreSQL Password"
 }

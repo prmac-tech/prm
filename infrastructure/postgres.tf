@@ -61,11 +61,6 @@ resource "helm_release" "postgresql" {
     value = var.postgresql_password
   }
 
-  set_sensitive {
-    name  = "postgresql.tls.certificatesSecret"
-    value = "postgres-service-cert"
-  }
-
   #-------------------------------------------------------------------------------------------------
   # Common
   #-------------------------------------------------------------------------------------------------

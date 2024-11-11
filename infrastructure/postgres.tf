@@ -47,7 +47,12 @@ resource "helm_release" "postgresql" {
 
   set_sensitive {
     name  = "postgresql.repmgrPassword"
-    value = var.postgresql_password
+    value = "var.postgresql_password"
+  }
+
+  set_sensitive {
+    name  = "postgresql.repmgrUsername"
+    value = "repmgr"
   }
 
   set_sensitive {

@@ -108,30 +108,31 @@ resource "helm_release" "postgresql" {
 
 resource "kubernetes_ingress_v1" "postgres_ingress" {
   metadata {
-    name = "postgres-ingress"
-    namespace = "prm"
+    name        = "postgres-ingress"
+    namespace   = "prm"
   }
-
   spec {
     ingress_class_name = "nginx"
-    backend {
-      service_name = "prm-postgres-postgresql"
-      service_port = 5432
-    }
     rule {
       host = "postgres.pr-mac.com"
       http {
         path {
-          backend {
-            service_name = "prm-postgres-postgresql"
-            service_port = 5432
+          content {
+            backend {
+              service {
+                name = "prm-postgres-postgresql"
+                port {
+                  number = 5432
+                }
+              }
+            }
+            path = "/"
           }
-          path = "/"
         }
       }
     }
     tls {
-      secret_name = "postgres-service-cert"
+      secret_name = "tls-secret"
     }
   }
 }

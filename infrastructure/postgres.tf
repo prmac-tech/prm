@@ -73,12 +73,12 @@ resource "helm_release" "postgresql" {
 
   set_sensitive {
     name  = "postgresql.tls.certFilename"
-    value = "certFile"
+    value = "cert.crt"
   }
 
   set_sensitive {
     name  = "postgresql.tls.certKeyFilename"
-    value = "certKeyFilename"
+    value = "cert.key"
   }
 
   #-------------------------------------------------------------------------------------------------

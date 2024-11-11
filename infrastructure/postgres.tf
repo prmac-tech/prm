@@ -95,15 +95,15 @@ resource "helm_release" "postgresql" {
 
 }
 
-resource "kubernetes_config_map" "example" {
-  metadata {
-    name = "my-config"
-    namespace: "prm"
-  }
-  data = {
-    5432 = "prm/prm-postgres-postgresql:5432"
-  }
-}
+#resource "kubernetes_config_map" "example" {
+#  metadata {
+#    name = "my-config"
+#    namespace: "prm"
+#  }
+#  data = {
+#    5432 = "prm/prm-postgres-postgresql:5432"
+#  }
+#}
 
 
 resource "kubernetes_ingress" "postgres_ingress" {

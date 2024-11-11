@@ -117,7 +117,6 @@ resource "kubernetes_ingress_v1" "postgres_ingress" {
       host = "postgres.pr-mac.com"
       http {
         path {
-          content {
             backend {
               service {
                 name = "prm-postgres-postgresql"
@@ -129,7 +128,6 @@ resource "kubernetes_ingress_v1" "postgres_ingress" {
             path = "/"
           }
         }
-      }
     }
     tls {
       secret_name = "tls-secret"

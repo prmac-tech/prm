@@ -71,6 +71,16 @@ resource "helm_release" "postgresql" {
     value = "postgres-service-cert"
   }
 
+  set_sensitive {
+    name  = "postgresql.tls.certFilename"
+    value = "certFile"
+  }
+
+  set_sensitive {
+    name  = "postgresql.tls.certKeyFilename"
+    value = "certKeyFilename"
+  }
+
   #-------------------------------------------------------------------------------------------------
   # Common
   #-------------------------------------------------------------------------------------------------

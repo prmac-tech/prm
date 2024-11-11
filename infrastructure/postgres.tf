@@ -30,6 +30,7 @@ resource "helm_release" "postgresql" {
   #-------------------------------------------------------------------------------------------------
   # Authentication
   #-------------------------------------------------------------------------------------------------
+
   set_sensitive {
     name  = "global.pgpool.adminUsername"
     value = var.postgresql_username
@@ -58,6 +59,16 @@ resource "helm_release" "postgresql" {
   set_sensitive {
     name  = "pgpool.adminPassword"
     value = var.postgresql_password
+  }
+
+  set_sensitive {
+    name  = "postgresql.tls.enabled"
+    value = true
+  }
+
+  set_sensitive {
+    name  = "postgresql.tls.certificatesSecret"
+    value = "postgres-service-cert"
   }
 
   #-------------------------------------------------------------------------------------------------

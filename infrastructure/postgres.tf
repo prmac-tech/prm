@@ -62,28 +62,8 @@ resource "helm_release" "postgresql" {
   }
 
   set_sensitive {
-    name  = "postgresql.tls.enabled"
-    value = true
-  }
-
-  set_sensitive {
     name  = "postgresql.tls.certificatesSecret"
     value = "postgres-service-cert"
-  }
-
-  set_sensitive {
-    name  = "postgresql.tls.certFilename"
-    value = "cert.crt"
-  }
-
-  set_sensitive {
-    name  = "postgresql.tls.certKeyFilename"
-    value = "cert.key"
-  }
-
-  set_sensitive {
-    name  = "postgresql.tls.usePasswordFile"
-    value = false
   }
 
   #-------------------------------------------------------------------------------------------------

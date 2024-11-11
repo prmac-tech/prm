@@ -106,7 +106,7 @@ resource "helm_release" "postgresql" {
 #}
 
 
-resource "kubernetes_ingress" "postgres_ingress" {
+resource "kubernetes_ingress_v1" "postgres_ingress" {
   metadata {
     name = "postgres-ingress"
     namespace = "prm"

@@ -113,7 +113,7 @@ resource "kubernetes_ingress" "postgres_ingress" {
   }
 
   spec {
-    ingressClassName = "nginx"
+    ingress_class_name = "nginx"
     backend {
       service_name = "prm-postgres-postgresql"
       service_port = 5432

@@ -11,19 +11,19 @@
 #  dnsNames:
 #    - rest-service.pr-mac.com
 #---
-#apiVersion: cert-manager.io/v1
-#kind: Certificate
-#metadata:
-#  name: auth-cert
-#  namespace: prm
-#spec:
-#  secretName: auth-cert
-#  issuerRef:
-#    name: letsencrypt-staging
-#    kind: ClusterIssuer
-#  dnsNames:
-#    - auth.pr-mac.com
-
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: auth-cert
+  namespace: prm
+spec:
+  secretName: auth-cert
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+  dnsNames:
+    - auth.pr-mac.com
+---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
@@ -32,7 +32,7 @@ metadata:
 spec:
   secretName: postgres-service-cert
   issuerRef:
-    name: letsencrypt
+    name: letsencrypt-staging
     kind: ClusterIssuer
   dnsNames:
     - postgres.pr-mac.com

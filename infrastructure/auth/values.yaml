@@ -3,15 +3,17 @@ ingress:
   hostname: auth.pr-mac.com
   annotations:
     kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: letsencrypt
+    cert-manager.io/cluster-issuer: letsencrypt-staging
   tls: true
+
 postgresql:
   enabled: false
 externalDatabase:
-  host: "none"
-extraEnvVars:
-  - name: KEYCLOAK_DATABASE_VENDOR
-    value: "dev-file"
+  host: postgres.pr-mac.com
+  user: postgres
+  password: ${postgres_password}
+  externalDatabase: keycloak_db
+  port: 5432
 extraVolumes:
   - name: kc-ps
     persistentVolumeClaim:

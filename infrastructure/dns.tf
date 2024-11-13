@@ -53,6 +53,11 @@ resource helm_release ingress {
     value = "/healthz"
   }
 
+  set {
+    name = "tcp.5432"
+    value = "prm/prm-postgres-postgresql:5432"
+  }
+
   depends_on = [
     helm_release.cert_manager,
     azurerm_kubernetes_cluster.aks

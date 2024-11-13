@@ -98,7 +98,7 @@ resource "helm_release" "postgresql" {
 resource "kubernetes_config_map" "postgres_config" {
   metadata {
     name = "postgres-config"
-    namespace: "prm"
+    namespace = "prm"
   }
   data = {
     5432 = "prm/prm-postgres-postgresql:5432"

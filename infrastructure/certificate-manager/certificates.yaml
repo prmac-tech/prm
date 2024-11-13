@@ -35,4 +35,4 @@ spec:
     name: letsencrypt-staging
     kind: ClusterIssuer
   dnsNames:
-    - postgres-service.pr-mac.com
+    - postgres.pr-mac.com

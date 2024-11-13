@@ -130,7 +130,7 @@ resource "kubernetes_ingress_v1" "postgres_ingress" {
         }
     }
     tls {
-      secret_name = "tls-secret"
+      secret_name = "postgres-service-cert"
     }
   }
 }

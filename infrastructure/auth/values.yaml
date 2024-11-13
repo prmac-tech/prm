@@ -14,13 +14,6 @@ externalDatabase:
   password: ${postgres_password}
   externalDatabase: keycloak_db
   port: 5432
-extraVolumes:
-  - name: kc-ps
-    persistentVolumeClaim:
-      claimName: k8s-pvc
-extraVolumeMounts:
-  - name: kc-ps
-    mountPath: /opt/jboss/keycloak/data
 
 auth:
   adminUser: admin

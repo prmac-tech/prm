@@ -32,7 +32,7 @@ metadata:
 spec:
   secretName: postgres-service-cert
   issuerRef:
-    name: letsencrypt-staging
+    name: letsencrypt
     kind: ClusterIssuer
   dnsNames:
     - postgres.pr-mac.com

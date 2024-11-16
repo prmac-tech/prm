@@ -28,6 +28,11 @@ resource "helm_release" "cert_manager" {
   ]
 }
 
+resource "time_sleep" "wait" {
+  create_duration = "60s"
+  depends_on = [helm_release.cert_manager]
+}
+
 locals {
   clusterissuer = "certificate-manager/clusterissuer-nginx.yaml"
   certificates = "certificate-manager/certificates.yaml"

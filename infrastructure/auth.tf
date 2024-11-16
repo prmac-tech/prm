@@ -5,6 +5,7 @@ resource "helm_release" "keycloak" {
   chart      = "keycloak"
   namespace  = "prm"
   version    = "24.0.2"
+  timeout    = "600"
 
   values = [
     templatefile("${path.root}/auth/values.yaml", {

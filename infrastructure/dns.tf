@@ -4,11 +4,6 @@ data "azurerm_dns_zone" "aks_dns_zone" {
   name                = "pr-mac.com"
 }
 
-#resource "azurerm_dns_zone" "aks_dns_zone" {
-#  name                = "pr-mac.com"
-#  resource_group_name = var.resource_group_name
-#}
-
 resource "azurerm_user_assigned_identity" "aks_dns_identity" {
   name                = "aks-dns-identity"
   resource_group_name = "prm"

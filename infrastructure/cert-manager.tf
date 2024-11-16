@@ -64,6 +64,7 @@ resource "kubectl_manifest" "certificates" {
   depends_on = [
     kubernetes_namespace.prm,
     data.kubectl_file_documents.certificates,
-    azurerm_kubernetes_cluster.aks
+    azurerm_kubernetes_cluster.aks,
+    helm_release.cert_manager
   ]
 }

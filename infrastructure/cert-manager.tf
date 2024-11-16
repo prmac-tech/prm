@@ -49,7 +49,8 @@ resource "kubectl_manifest" "clusterissuer" {
   yaml_body = each.value
   depends_on = [
     data.kubectl_file_documents.clusterissuer,
-    azurerm_kubernetes_cluster.aks
+    azurerm_kubernetes_cluster.aks,
+    helm_release.cert_manager
   ]
 }
 

@@ -47,6 +47,7 @@ resource helm_release ingress {
   chart      = "ingress-nginx"
   namespace  = "prm"
   version    = "4.11.3"
+  wait       = false
 
   set {
     name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/azure-load-balancer-health-probe-request-path"

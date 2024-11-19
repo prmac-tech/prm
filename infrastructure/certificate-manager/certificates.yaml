@@ -36,3 +36,29 @@ spec:
     kind: ClusterIssuer
   dnsNames:
     - postgres.pr-mac.com
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: grafana-cert
+  namespace: prometheus
+spec:
+  secretName: grafana-cert
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+  dnsNames:
+    - grafana.pr-mac.com
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: prometheus-cert
+  namespace: prometheus
+spec:
+  secretName: prometheus-cert
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+  dnsNames:
+    - prometheus.pr-mac.com

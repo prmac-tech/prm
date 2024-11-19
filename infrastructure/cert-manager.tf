@@ -63,6 +63,7 @@ resource "kubectl_manifest" "certificates" {
   yaml_body = each.value
   depends_on = [
     kubernetes_namespace.prm,
+    kubernetes_namespace.prom-namespace,
     data.kubectl_file_documents.certificates,
     azurerm_kubernetes_cluster.aks,
     helm_release.cert_manager

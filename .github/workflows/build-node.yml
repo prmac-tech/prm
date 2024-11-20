@@ -3,10 +3,6 @@ name: Build Node
 on:
   workflow_dispatch:
 
-defaults:
-  run:
-
-
 jobs:
   build:
     runs-on: ubuntu-latest

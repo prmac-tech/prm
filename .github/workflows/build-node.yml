@@ -45,11 +45,11 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: ./projects/ui
+          context: .
           file: ./projects/ui/Dockerfile
           registry: ghcr.io
           push: true
-          tags: pmcphee77/prm-ui:${{ steps.version.outputs.version }}
+          tags: ghcr.io/pmcphee77/prm-ui:${{ steps.version.outputs.version }}
       - name: Image digest
         run: echo {{ steps.docker_build.outputs.digest }}
 

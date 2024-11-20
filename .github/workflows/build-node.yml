@@ -46,7 +46,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./projects/ui
-          file: ./Dockerfile
+          file: ./projects/ui/Dockerfile
           push: true
           tags: pmcphee77/prm-ui:${{ steps.version.outputs.version }}
       - name: Image digest

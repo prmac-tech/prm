@@ -3,12 +3,13 @@ name: Build Node
 on:
   workflow_dispatch:
 
+defaults:
+  run:
+    working-directory: ./projects/ui
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./projects/ui
     strategy:
       matrix:
         node-version: [20.x]

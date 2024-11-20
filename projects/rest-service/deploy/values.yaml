@@ -8,6 +8,7 @@ generic-service:
     repository: ghcr.io/pmcphee77/rest-service
 
   ingress:
+    host: rest-service.pr-mac.com
     className: nginx
     tlsSecretName: rest-service-cert
 

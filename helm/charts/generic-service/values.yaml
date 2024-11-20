@@ -34,7 +34,7 @@ ingress:
   enabled: false
   annotations:
     nginx.ingress.kubernetes.io/custom-http-errors: "418"
-  host: rest-service.pr-mac.com
+  host: chart-example.local
   hosts: []
   path: /
   healthPath: /health

@@ -1,0 +1,17 @@
+# Common values
+enabled: true
+
+generic-service:
+  nameOverride: ui-service
+
+  image:
+    repository: ghcr.io/pmcphee77/prm-ui
+
+  ingress:
+    host: www.pr-mac.com
+    className: nginx
+    tlsSecretName: ui-cert
+
+  imagePullSecrets:
+    - name: regcred
+

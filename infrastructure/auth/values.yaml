@@ -20,3 +20,7 @@ auth:
   adminPassword: admin
   tls:
     termination: edge
+
+extraEnvVars:
+  - name: KC_PROXY_HEADERS
+    value: 'forwarded'

@@ -20,7 +20,7 @@ resource "kubernetes_namespace" "prom-namespace" {
 }
 
 resource "helm_release" "prometheus" {
-  depends_on = [kubernetes_namespace.prom-namespace, time_sleep.wait_for_kubernetes]
+  depends_on = [kubernetes_namespace.prom-namespace, helm_release.keycloak, time_sleep.wait_for_kubernetes]
   name       = "prometheus"
   repository = "https://prometheus-community.github.io/helm-charts"
   chart      = "kube-prometheus-stack"

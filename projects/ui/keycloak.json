@@ -1,0 +1,14 @@
+{
+  "realm": "prm",
+  "auth-server-url": "https://auth.pr-mac.com/",
+  "ssl-required": "external",
+  "resource": "prm-ui-client",
+  "verify-token-audience": true,
+  "credentials": {
+    "secret": "9DRmuO5HxjsFwVaGv4BkBUqZDPCnXlGW"
+  },
+  "confidential-port": 0,
+  "policy-enforcer": {
+    "credentials": {}
+  }
+}

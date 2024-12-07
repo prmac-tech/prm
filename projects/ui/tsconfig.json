@@ -1,15 +1,30 @@
 {
-  "extends": "./node_modules/gts/tsconfig-google.json",
+  "compileOnSave": true,
   "compilerOptions": {
+    "target": "es2018",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "rootDir": ".",
     "outDir": "build",
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "noEmit": false,
+    "allowJs": true,
+    "checkJs": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": false
+    "noImplicitAny": true,
+    "experimentalDecorators": true,
+    "typeRoots": ["./src/@types", "./node_modules/@types"],
+    "inlineSources": true,
+
+    // Set `sourceRoot` to  "/" to strip the build path prefix
+    // from generated source code references.
+    // This improves issue grouping in Sentry.
+    "sourceRoot": "/"
   },
-  "target": "es6",
-  "module": "commonjs",
-  "esModuleInterop": true,
-  "noImplicitAny": true,
+  "exclude": ["node_modules", "assets/**/*.js", "build", "test-results"],
   "include": [
     "**/*.js",
     "**/*.ts"

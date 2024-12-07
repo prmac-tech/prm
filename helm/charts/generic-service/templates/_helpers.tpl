@@ -41,9 +41,6 @@ helm.sh/chart: {{ include "generic-service.chart" . }}
 app.kubernetes.io/version: {{ .Values.image.tag | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- if .Values.productId }}
-hmpps.justice.gov.uk/product-id: {{ .Values.productId }}
-{{- end }}
 {{- end }}
 
 {{/*
@@ -82,18 +79,6 @@ Create IP allow list annotation form nginx
       {{- end -}}
     {{- end -}}
   {{- end -}}
-{{ if $allCustomItemNames -}}
-  {{ cat "hmpps.justice.gov.uk/ip_allowlist_from_values:" ($allCustomItemNames | join "," | quote) }}
-{{ end -}}
-{{ if $allGroups -}}
-  {{ cat "hmpps.justice.gov.uk/ip_allowlist_groups:" ($allGroups | join "," | quote) }}
-{{ end -}}
-{{ if $allGroupItemNames -}}
-  {{ cat "hmpps.justice.gov.uk/ip_allowlist_from_groups:" ($allGroupItemNames | join "," | quote) }}
-{{ end -}}
-{{ if $.Values.allowlist_version -}}
-  {{ cat "hmpps.justice.gov.uk/ip_allowlist_version:" $.Values.allowlist_version }}
-{{ end -}}
 {{ cat "nginx.ingress.kubernetes.io/whitelist-source-range:" ($allAllowlists | join "," | quote) }}
 {{- end -}}
 

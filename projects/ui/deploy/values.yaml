@@ -5,7 +5,7 @@ generic-service:
   nameOverride: ui-service
 
   image:
-    repository: ghcr.io/pmcphee77/prm-ui
+    repository: ghcr.io/prmac-tech/prm-ui
 
   ingress:
     host: www.pr-mac.com

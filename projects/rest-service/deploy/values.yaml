@@ -5,7 +5,7 @@ generic-service:
   nameOverride: rest-service
 
   image:
-    repository: ghcr.io/pmcphee77/rest-service
+    repository: ghcr.io/prmac-tech/rest-service
 
   ingress:
     host: rest-service.pr-mac.com

@@ -19,7 +19,7 @@ variable "docker_password" {
 variable "docker_username" {
   description = "Docker username"
   type        = string
-  default = "pmcphee77"
+  default = "prmac-tech"
   sensitive   = true
 }
 

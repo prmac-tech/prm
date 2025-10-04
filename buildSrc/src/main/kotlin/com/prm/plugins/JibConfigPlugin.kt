@@ -25,7 +25,7 @@ class JibConfigPlugin : Plugin<Project> {
                     image = System.getenv("JIB_FROM_IMAGE") ?: "eclipse-temurin:21-jre-alpine"
                 }
                 to {
-                    image = "ghcr.io/pmcphee77/${project.name}"
+                    image = "ghcr.io/prmac-tech/${project.name}"
                 }
             }
 

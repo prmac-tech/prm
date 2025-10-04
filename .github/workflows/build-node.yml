@@ -34,7 +34,7 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
-          username: pmcphee77
+          username: prmac-tech
           password: ${{ secrets.GHCR_SECRET }}
       - name: Set up Docker Buildx
         id: buildx
@@ -49,7 +49,7 @@ jobs:
           file: ./projects/ui/Dockerfile
           registry: ghcr.io
           push: true
-          tags: ghcr.io/pmcphee77/prm-ui:${{ steps.version.outputs.version }}
+          tags: ghcr.io/prmac-tech/prm-ui:${{ steps.version.outputs.version }}
       - name: Image digest
         run: echo {{ steps.docker_build.outputs.digest }}
 

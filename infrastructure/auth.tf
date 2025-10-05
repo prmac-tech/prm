@@ -1,7 +1,7 @@
 
 resource "helm_release" "keycloak" {
   name       = "auth"
-  repository = "https://charts.bitnami.com/bitnami"
+  repository = "oci://registry-1.docker.io/bitnami"
   chart      = "keycloak"
   namespace  = "prm"
   version    = "25.2.0"

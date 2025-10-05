@@ -1,0 +1,7 @@
+{
+  "tenantId": "${tenantId}",
+  "subscriptionId": "${subscriptionId}",
+  "resourceGroup": "${resourceGroup}",
+  "aadClientId": "${aadClientId}",
+  "aadClientSecret": "${aadClientSecret}"
+}

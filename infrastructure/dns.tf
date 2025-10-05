@@ -63,10 +63,10 @@ resource helm_release ingress {
 
 resource helm_release external_dns {
   name       = "external-dns"
-  repository = "https://charts.bitnami.com/bitnami"
+  repository = "https://kubernetes-sigs.github.io/external-dns"
   chart      = "external-dns"
   namespace  = "prm"
-  version    = "8.5.1"
+  version    = "1.19.0"
 
 #  set {
 #    name  = "image.repository"
@@ -89,6 +89,7 @@ resource helm_release external_dns {
 
   depends_on = [
     azurerm_user_assigned_identity.aks_dns_identity,
-    azurerm_kubernetes_cluster.aks
+    azurerm_kubernetes_cluster.aks,
+    kubernetes_secret.azure-config-file
   ]
 }

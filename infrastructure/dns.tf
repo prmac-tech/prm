@@ -65,11 +65,13 @@ resource helm_release external_dns {
   name       = "external-dns"
   repository = "oci://registry-1.docker.io/bitnamicharts"
   chart      = "external-dns"
-  image = {
-    repository = "docker.io/bitnamilegacy"
-  }
   namespace  = "prm"
   version    = "8.9.2"
+
+  set {
+    name  = "image.repository"
+    value = "docker.io/bitnamilegacy"
+  }
 
   values = [
     templatefile("${path.root}/ext-dns/values.yaml", {

@@ -14,3 +14,11 @@ azure:
   tenantId: ${azure_tenant_id}
   resourceGroup: ${azure_resource_group}
   useWorkloadIdentityExtension: true
+#extraVolumeMounts:
+#  - name: azure-config-file
+#    mountPath: /etc/kubernetes
+#    readOnly: true
+#extraVolumes:
+#  - name: azure-config-file
+#    secret:
+#      secretName: azure-config-file

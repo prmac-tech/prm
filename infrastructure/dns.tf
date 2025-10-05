@@ -63,10 +63,10 @@ resource helm_release ingress {
 
 resource helm_release external_dns {
   name       = "external-dns"
-  repository = "https://komailo.github.io/helm-charts"
+  repository = "https://charts.bitnami.com/bitnami"
   chart      = "external-dns"
   namespace  = "prm"
-  version    = "1.3.0"
+  version    = "8.5.1"
 
 #  set {
 #    name  = "image.repository"

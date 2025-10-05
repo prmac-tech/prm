@@ -21,7 +21,9 @@ resource "kubernetes_secret" "azure-config-file" {
     name = "azure-config-file"
     namespace = "prm"
   }
-  data = "${data.template_file.azure-config-file.rendered}"
+  data = {
+    "azure-config-file" = "${data.template_file.docker_config_script.rendered}"
+  }
   type = "Opaque"
   depends_on = [
     azurerm_kubernetes_cluster.aks,

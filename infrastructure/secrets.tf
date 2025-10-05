@@ -45,7 +45,7 @@ data "template_file" "azure-config-file" {
   depends_on = [
     azurerm_kubernetes_cluster.aks,
     kubernetes_namespace.prm,
-    azurerm_user_assigned_identity
+    azurerm_user_assigned_identity.aks_dns_identity
   ]
 }
 

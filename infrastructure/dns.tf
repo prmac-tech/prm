@@ -63,7 +63,7 @@ resource helm_release ingress {
 
 resource helm_release external_dns {
   name       = "external-dns"
-  repository = "https://github.com/kubernetes-sigs"
+  repository = "https://kubernetes-sigs.github.io"
   chart      = "external-dns"
   namespace  = "prm"
   version    = "1.19.0"

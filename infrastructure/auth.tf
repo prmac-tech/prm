@@ -1,7 +1,7 @@
 
 resource "helm_release" "keycloak" {
   name       = "auth"
-  repository = "oci://registry-1.docker.io/cloudpirates/keycloak"
+  repository = "oci://registry-1.docker.io/cloudpirates"
   chart      = "keycloak"
   namespace  = "prm"
   version    = "0.1.10"

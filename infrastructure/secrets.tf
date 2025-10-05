@@ -22,7 +22,7 @@ resource "kubernetes_secret" "azure-config-file" {
     namespace = "prm"
   }
   data = {
-    "azure-config-file" = "${data.template_file.docker_config_script.rendered}"
+    "azure.json" = "${data.template_file.azure-config-file.rendered}"
   }
   type = "Opaque"
   depends_on = [
@@ -41,7 +41,6 @@ data "template_file" "azure-config-file" {
     tenantId           = data.azurerm_subscription.current.tenant_id
     subscriptionId     = data.azurerm_subscription.current.subscription_id
     resourceGroup      = "prm"
-    aadClientId        = azurerm_user_assigned_identity.aks_dns_identity.client_id
   }
 
   depends_on = [

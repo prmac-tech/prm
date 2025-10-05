@@ -2,5 +2,5 @@
   "tenantId": "${tenantId}",
   "subscriptionId": "${subscriptionId}",
   "resourceGroup": "${resourceGroup}",
-  "aadClientId": "${aadClientId}"
+  "useWorkloadIdentityExtension": true
 }

@@ -22,7 +22,7 @@ resource "kubernetes_secret" "azure-config-file" {
     namespace = "prm"
   }
   data = "${data.template_file.azure-config-file.rendered}"
-  type = "generic"
+  type = "Opaque"
   depends_on = [
     azurerm_kubernetes_cluster.aks,
     kubernetes_namespace.prm,

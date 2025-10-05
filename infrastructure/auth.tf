@@ -1,10 +1,10 @@
 
 resource "helm_release" "keycloak" {
   name       = "auth"
-  repository = "oci://registry-1.docker.io/cloudpirates"
+  repository = "https://airbytehq.github.io/helm-charts"
   chart      = "keycloak"
   namespace  = "prm"
-  version    = "0.1.10"
+  version    = "2.0.0"
   timeout    = "600"
 
   values = [

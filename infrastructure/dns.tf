@@ -73,6 +73,12 @@ resource helm_release external_dns {
     value = "docker.io/bitnamilegacy"
   }
 
+  set {
+    name  = "global.security.allowInsecureImages"
+    value = "true"
+  }
+
+  global.security.allowInsecureImages
   values = [
     templatefile("${path.root}/ext-dns/values.yaml", {
       azure_subscription_id  = data.azurerm_subscription.current.subscription_id

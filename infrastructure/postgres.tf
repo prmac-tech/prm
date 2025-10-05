@@ -13,6 +13,11 @@ resource "helm_release" "postgresql" {
   }
 
   set {
+    name  = "global.security.allowInsecureImages"
+    value = "true"
+  }
+
+  set {
     name  = "pgpool.replicaCount"
     value = var.postgresql_router_count
   }

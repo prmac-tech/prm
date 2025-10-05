@@ -19,6 +19,11 @@ resource "helm_release" "keycloak" {
     value = "docker.io/bitnamilegacy"
   }
 
+  set {
+    name  = "global.security.allowInsecureImages"
+    value = "true"
+  }
+
   depends_on = [
     kubectl_manifest.certificates,
     azurerm_kubernetes_cluster.aks,

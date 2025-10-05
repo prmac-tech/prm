@@ -29,7 +29,7 @@ jobs:
         run: terraform init
       - name: Terraform Plan
         working-directory: ./infrastructure
-        run: terraform plan -out "tfplan"
+        run: terraform plan -lock=false -out "tfplan"
       - name: Terraform Apply
         working-directory: ./infrastructure
         run: terraform apply "tfplan"

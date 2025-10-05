@@ -70,7 +70,7 @@ resource helm_release external_dns {
 
   set {
     name  = "image.repository"
-    value = "docker.io/bitnamilegacy"
+    value = "bitnamilegacy"
   }
 
   set {

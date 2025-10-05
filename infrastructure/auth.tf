@@ -16,7 +16,7 @@ resource "helm_release" "keycloak" {
 
   set {
     name  = "image.repository"
-    value = "docker.io/bitnamilegacy"
+    value = "bitnamilegacy"
   }
 
   set {

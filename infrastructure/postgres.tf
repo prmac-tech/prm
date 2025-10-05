@@ -9,7 +9,7 @@ resource "helm_release" "postgresql" {
 
   set {
     name  = "image.repository"
-    value = "docker.io/bitnamilegacy"
+    value = "bitnamilegacy"
   }
 
   set {

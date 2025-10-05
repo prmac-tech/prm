@@ -4,7 +4,7 @@ resource "helm_release" "keycloak" {
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "keycloak"
   namespace  = "prm"
-  version    = "24.0.2"
+  version    = "26.3.5"
   timeout    = "600"
 
   values = [

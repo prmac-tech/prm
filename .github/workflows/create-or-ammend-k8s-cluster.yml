@@ -27,9 +27,9 @@ jobs:
       - name: Terraform init
         working-directory: ./infrastructure
         run: terraform init
-      - name: Terraform unlock
-        working-directory: ./infrastructure
-        run: terraform force-unlock -force 51890e39-111f-53de-3a34-162e0fc7c8ad
+#      - name: Terraform unlock
+#        working-directory: ./infrastructure
+#        run: terraform force-unlock -force 51890e39-111f-53de-3a34-162e0fc7c8ad
       - name: Terraform Plan
         working-directory: ./infrastructure
         run: terraform plan -out "tfplan"

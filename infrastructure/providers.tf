@@ -20,7 +20,7 @@ terraform {
     }
     helm = {
       source  = "hashicorp/helm"
-      version = ">= 2.1.0"
+      version = ">= 2.1.0, < 3.0.0"
     }
     kubectl = {
       source  = "gavinbunney/kubectl"
@@ -43,8 +43,6 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(azurerm_kubernetes_cluster.aks.kube_config.0.cluster_ca_certificate)
 }
 provider "helm" {
-  source  = "hashicorp/helm"
-  version = ">= 2.0.0, < 3.0.0"
   debug = true
   kubernetes {
     host                   = azurerm_kubernetes_cluster.aks.kube_config.0.host

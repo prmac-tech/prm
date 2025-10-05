@@ -4,7 +4,7 @@ resource "helm_release" "keycloak" {
   repository = "https://airbytehq.github.io/helm-charts"
   chart      = "keycloak"
   namespace  = "prm"
-  version    = "2.0.0"
+  version    = "2.0.0-dataplane-advertise-version-alpha-56e2291"
   timeout    = "600"
 
   values = [

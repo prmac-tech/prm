@@ -1,10 +1,10 @@
 
 resource "helm_release" "keycloak" {
   name       = "auth"
-  repository = "oci://registry-1.docker.io/bitnamicharts"
+  repository = "oci://registry-1.docker.io/cloudpirates/keycloak"
   chart      = "keycloak"
   namespace  = "prm"
-  version    = "25.2.0"
+  version    = "0.1.10"
   timeout    = "600"
 
   values = [
@@ -14,15 +14,15 @@ resource "helm_release" "keycloak" {
     })
   ]
 
-  set {
-    name  = "image.repository"
-    value = "bitnamilegacy"
-  }
-
-  set {
-    name  = "global.security.allowInsecureImages"
-    value = "true"
-  }
+#  set {
+#    name  = "image.repository"
+#    value = "bitnamilegacy"
+#  }
+#
+#  set {
+#    name  = "global.security.allowInsecureImages"
+#    value = "true"
+#  }
 
   depends_on = [
     kubectl_manifest.certificates,

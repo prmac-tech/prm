@@ -1,21 +1,22 @@
 
 resource "helm_release" "postgresql" {
   name             = "postgres"
-  repository       = "oci://registry-1.docker.io/bitnamicharts"
-  chart            = "postgresql-ha"
-  version          = "16.3.2"
+#    repository       = "oci://registry-1.docker.io/bitnamicharts"
+  repository       = "oci://registry-1.docker.io/reffined"
+  chart            = "postgres-ha"
+  version          = "0.1.0"
   namespace        = "prm"
   create_namespace = true
 
-  set {
-    name  = "image.repository"
-    value = "bitnamilegacy"
-  }
-
-  set {
-    name  = "global.security.allowInsecureImages"
-    value = "true"
-  }
+#  set {
+#    name  = "image.repository"
+#    value = "bitnamilegacy"
+#  }
+#
+#  set {
+#    name  = "global.security.allowInsecureImages"
+#    value = "true"
+#  }
 
   set {
     name  = "pgpool.replicaCount"

@@ -63,20 +63,20 @@ resource helm_release ingress {
 
 resource helm_release external_dns {
   name       = "external-dns"
-  repository = "oci://registry-1.docker.io/bitnamicharts"
+  repository = "https://github.com/kubernetes-sigs"
   chart      = "external-dns"
   namespace  = "prm"
-  version    = "8.9.2"
+  version    = "1.19.0"
 
-  set {
-    name  = "image.repository"
-    value = "bitnamilegacy"
-  }
-
-  set {
-    name  = "global.security.allowInsecureImages"
-    value = "true"
-  }
+#  set {
+#    name  = "image.repository"
+#    value = "bitnamilegacy"
+#  }
+#
+#  set {
+#    name  = "global.security.allowInsecureImages"
+#    value = "true"
+#  }
 
   values = [
     templatefile("${path.root}/ext-dns/values.yaml", {

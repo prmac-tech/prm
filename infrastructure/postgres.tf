@@ -8,6 +8,11 @@ resource "helm_release" "postgresql" {
   create_namespace = true
 
   set {
+    name  = "image.repository"
+    value = "docker.io/bitnamilegacy"
+  }
+
+  set {
     name  = "pgpool.replicaCount"
     value = var.postgresql_router_count
   }

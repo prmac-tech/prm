@@ -13,6 +13,12 @@ resource "helm_release" "keycloak" {
       postgres_password = var.postgresql_password
     })
   ]
+
+  set {
+    name  = "image.repository"
+    value = "docker.io/bitnamilegacy"
+  }
+
   depends_on = [
     kubectl_manifest.certificates,
     azurerm_kubernetes_cluster.aks,

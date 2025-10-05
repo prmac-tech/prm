@@ -63,10 +63,10 @@ resource helm_release ingress {
 
 resource helm_release external_dns {
   name       = "external-dns"
-  repository = "https://kubernetes-sigs.github.io/external-dns"
+  repository = "https://apecloud.github.io/helm-charts"
   chart      = "external-dns"
   namespace  = "prm"
-  version    = "1.19.0"
+  version    = "6.20.4"
 
 #  set {
 #    name  = "image.repository"

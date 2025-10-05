@@ -66,7 +66,7 @@ resource helm_release external_dns {
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "external-dns"
   namespace  = "prm"
-  version    = "8.3.9"
+  version    = "9.0.3"
 
   values = [
     templatefile("${path.root}/ext-dns/values.yaml", {

@@ -90,6 +90,5 @@ resource helm_release external_dns {
   depends_on = [
     azurerm_user_assigned_identity.aks_dns_identity,
     azurerm_kubernetes_cluster.aks,
-    kubernetes_secret.azure-config-file
   ]
 }

@@ -44,7 +44,7 @@ variable "cluster_name" {
 variable "kubernetes_version" {
   type        = string
   description = "Kubernetes version"
-  default = "1.34.1"
+  default = "1.34.0"
 }
 
 variable "system_node_count" {

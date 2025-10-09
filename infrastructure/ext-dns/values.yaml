@@ -9,6 +9,11 @@ serviceAccount:
     azure.workload.identity/client-id: ${external_dns_client_id}
   labels:
     azure.workload.identity/use: "true"
+podLabels:
+  azure.workload.identity/use: "true"
+podAnnotations:
+  azure.workload.identity/client-id: ${external_dns_client_id}
+  azure.workload.identity/tenant-id: ${azure_tenant_id}
 azure:
   subscriptionId: ${azure_subscription_id}
   tenantId: ${azure_tenant_id}

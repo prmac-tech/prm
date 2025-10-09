@@ -2,9 +2,9 @@
 resource "helm_release" "postgresql" {
   name             = "postgres"
 #    repository       = "oci://registry-1.docker.io/bitnamicharts"
-  repository       = "https://charts.riftbit.com"
+  repository       = "oci://registry-1.docker.io/bitnamicharts"
   chart            = "postgres-ha"
-  version          = "7.9.6"
+  version          = "16.3.2"
   namespace        = "prm"
   create_namespace = true
 

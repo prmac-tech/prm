@@ -8,15 +8,34 @@ resource "helm_release" "postgresql" {
   namespace        = "prm"
   create_namespace = true
 
-#  set {
-#    name  = "image.repository"
-#    value = "bitnamilegacy"
+  set {
+    name  = "postgresql.initContainers"
+    value = [
+      <<EOT
+      pgupgrade:
+        env:
+          - name: PGAUTO_ONESHOT
+            value: "yes"
+          - name: PGDATA
+            value: /bitnami/postgresql/data
+          - name: POSTGRES_PASSWORD
+            value: ${var.postgresql_password.value}
+        image: pgautoupgrade/pgautoupgrade:18-trixie
+        name: upgrade-postgres
+        securityContext:
+          runAsUser: 0
+        volumeMounts:
+          - mountPath: /bitnami/postgresql
+            name: prm
+    EOT
+    ]
+    }
 #  }
 #
 #  set {
 #    name  = "global.security.allowInsecureImages"
 #    value = "true"
-#  }
+#
 
   set {
     name  = "pgpool.replicaCount"

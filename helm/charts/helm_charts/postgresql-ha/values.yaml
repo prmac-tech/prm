@@ -117,9 +117,9 @@ postgresql:
   ## @param postgresql.image.debug Specify if debug logs should be enabled
   ##
   image:
-    registry: docker.io
-    repository: bitnami/postgresql-repmgr
-    tag: 17.6.0-debian-12-r2
+    registry: ghcr.io
+    repository: prmac-tech/postgresql-repmgr
+    tag: latest
     digest: ""
     ## ref: https://kubernetes.io/docs/concepts/containers/images/#pre-pulled-images
     ##
@@ -321,7 +321,6 @@ postgresql:
   ## resources, such as Minikube. If you do want to specify resources, uncomment the following
   ## lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   ## @param postgresql.resourcesPreset Set container resources according to one common preset (allowed values: none, nano, micro, small, medium, large, xlarge, 2xlarge). This is ignored if postgresql.resources is set (postgresql.resources is recommended for production).
-  ## More information: https://github.com/bitnami/charts/blob/main/bitnami/common/templates/_resources.tpl#L15
   ##
   resourcesPreset: "micro"
   ## @param postgresql.resources Set container requests and limits for different resources like CPU or memory (essential for production workloads)
@@ -1130,9 +1129,9 @@ pgpool:
   ## @param pgpool.image.debug Specify if debug logs should be enabled
   ##
   image:
-    registry: docker.io
-    repository: bitnami/pgpool
-    tag: 4.6.3-debian-12-r0
+    registry: ghcr.io
+    repository: prmac-tech/pgpool
+    tag: latest
     digest: ""
     ## ref: https://kubernetes.io/docs/concepts/containers/images/#pre-pulled-images
     ##
@@ -1144,7 +1143,8 @@ pgpool:
     ## pullSecrets:
     ##   - myRegistryKeySecretName
     ##
-    pullSecrets: []
+    pullSecrets:
+      - regcred
     ## Set to true if you would like to see extra information on logs
     ##
     debug: false
@@ -1734,9 +1734,9 @@ metrics:
   ## @param metrics.image.debug Specify if debug logs should be enabled
   ##
   image:
-    registry: docker.io
-    repository: bitnami/postgres-exporter
-    tag: 0.17.1-debian-12-r16
+    registry: ghcr.io
+    repository: prmac-tech/postgres-exporter
+    tag: latest
     digest: ""
     ## ref: https://kubernetes.io/docs/concepts/containers/images/#pre-pulled-images
     ##
@@ -1748,7 +1748,8 @@ metrics:
     ## pullSecrets:
     ##   - myRegistryKeySecretName
     ##
-    pullSecrets: []
+    pullSecrets:
+      - regcred
     ## Set to true if you would like to see extra information on logs
     ##
     debug: false
@@ -1984,9 +1985,9 @@ volumePermissions:
   ## @param volumePermissions.image.pullSecrets Specify docker-registry secret names as an array
   ##
   image:
-    registry: docker.io
-    repository: bitnami/os-shell
-    tag: 12-debian-12-r51
+    registry: ghcr.io
+    repository: prmac-tech/os-shell
+    tag: latest
     digest: ""
     ## ref: https://kubernetes.io/docs/concepts/containers/images/#pre-pulled-images
     ##

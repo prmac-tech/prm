@@ -3,7 +3,7 @@ resource "helm_release" "postgresql" {
   name             = "postgres"
 #    repository       = "oci://registry-1.docker.io/bitnamicharts"
   #  repository       = "https://cloudnative-pg.io/charts/cloudnative-pg"
-  chart            = "${path.module}/../helm/postgres-ha"
+  chart            = "${path.module}/../helm/postgresql-ha"
   version          = "1.0.0"
   namespace        = "prm"
   create_namespace = true

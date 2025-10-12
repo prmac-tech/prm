@@ -323,8 +323,8 @@ postgresql:
       securityContext:
         runAsUser: 0
       volumeMounts:
-        - mountPath: /bitnami/postgresql
-          name: data
+        - mountPath: /bitnami/postgresql/data/
+          subPath: data
   ## @param postgresql.sidecars Extra sidecar containers to add to the StatefulSet
   ##
   sidecars: []

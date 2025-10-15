@@ -97,7 +97,7 @@ variable "postgresql_server_count" {
   sensitive   = false
   type        = number
   description = "Total PostgreSQL Server"
-  default     = 1
+  default     = 3
 }
 
 #---------------------------------------------------------------------------------------------------

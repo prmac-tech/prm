@@ -104,7 +104,8 @@ image:
   ## pullSecrets:
   ##   - myRegistryKeySecretName
   ##
-  pullSecrets: []
+  pullSecrets:
+    - regcred
   debug: false
 ## Keycloak authentication parameters
 ## ref: https://github.com/bitnami/containers/tree/main/bitnami/keycloak#admin-credentials
@@ -1015,7 +1016,8 @@ keycloakConfigCli:
     ## pullSecrets:
     ##   - myRegistryKeySecretName
     ##
-    pullSecrets: []
+    pullSecrets:
+      - regcred
   ## @param keycloakConfigCli.annotations [object] Annotations for keycloak-config-cli job
   ##
   annotations: {}

@@ -1,0 +1,26 @@
+# SPDX-License-Identifier: APACHE-2.0
+
+annotations:
+  images: |
+    - name: keycloak
+      image: ghcr.io/prmac-tech/keycloak:latest
+    - name: keycloak-config-cli
+      image: ghcr.io/prmac-tech/keycloak-config-cli:latest
+  licenses: Apache-2.0
+  tanzuCategory: application
+apiVersion: v2
+appVersion: 1.0.0
+dependencies:
+- condition: postgresql.enabled
+  name: postgresql
+  repository: file://postgresql
+  version: 16.x.x
+- name: common
+  repository: file://common
+  version: 2.x.x
+description: Keycloak is a high performance Java-based identity and access management
+  solution. It lets developers add an authentication layer to their applications with
+  minimum effort.
+icon: https://dyltqmyl993wv.cloudfront.net/assets/stacks/keycloak/img/keycloak-stack-220x234.png
+name: keycloak
+version: 1.0.0

@@ -8,12 +8,10 @@ resource "helm_release" "postgresql" {
   namespace        = "prm"
   create_namespace = true
 
-#  }
-#
-#  set {
-#    name  = "global.security.allowInsecureImages"
-#    value = "true"
-#
+  set {
+    name  = "global.security.allowInsecureImages"
+    value = "true"
+  }
 
   set {
     name  = "pgpool.replicaCount"

@@ -26,6 +26,6 @@ resource "helm_release" "keycloak" {
   depends_on = [
     kubectl_manifest.certificates,
     azurerm_kubernetes_cluster.aks,
-    helm_release.keycloak
+    helm_release.postgresql
   ]
 }

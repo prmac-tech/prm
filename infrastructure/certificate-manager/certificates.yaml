@@ -19,7 +19,7 @@ metadata:
 spec:
   secretName: auth-cert
   issuerRef:
-    name: letsencrypt-staging
+    name: letsencrypt-production
     kind: ClusterIssuer
   dnsNames:
     - auth.pr-mac.com
